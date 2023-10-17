@@ -1,0 +1,603 @@
+@use "reset";
+
+
+.mainSwiper {
+    width: 100%; height: 51vw;
+
+    .swiper-slide { position: relative;
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+        
+
+        img { display: block; width: 100%; }
+
+        video { display: block; width: 100%; }
+
+        .swiper_txt { width: 75%; position: absolute; top: 75%;
+
+            h1 { color: #fff; font-weight: 700; font-size: 3rem; }
+            .swiper_btn { border-radius: 30px; padding: 13px 40px; }
+            &.swiper_txt2{ top: 68%; }
+        }
+    }
+
+    .swiper-scrollbar.swiper-scrollbar-horizontal {
+        background: #aaa; height: 0.11rem; width: 70%; bottom: 6%; left: 12.5%;
+
+        .swiper-scrollbar-drag { background: #fff; }
+    }
+
+    .swiper-button-prev {
+        top: 94%; left: 83%; color: #fff;
+
+        &::after { display: inline-block; font-size: 1.2rem; }
+    }
+
+    .swiper-button-next {
+        top: 94%; left: 85%; color: #fff;
+
+        &::after { display: inline-block; font-size: 1.2rem;}
+    }
+
+    @media only screen and (min-width: 769px) {
+        .swiper-slide:first-child {
+            transition: transform 100ms;
+        }
+
+        .swiper-slide:first-child img {
+            transition: box-shadow 500ms;
+        }
+
+        .swiper-slide.swiper-slide-active:first-child {
+            z-index: 2;
+        }
+
+        .swiper-slide:nth-child(2) {
+            transition: transform 100ms;
+        }
+
+        .swiper-slide.swiper-slide-next:nth-child(2) {
+            transform: translateX(55%);
+            z-index: 1;
+        }
+
+        .swiper[dir="rtl"] .swiper-slide.swiper-slide-active:first-child {
+            transform: translateX(-50%);
+        }
+
+        .swiper[dir="rtl"] .swiper-slide.swiper-slide-next:nth-child(2) {
+            transform: translateX(-55%);
+        }
+    }
+}
+
+
+
+.now{padding: 80px 0; display: flex; flex-wrap: wrap; justify-content: center;
+
+    h1{text-align: center; font-weight: 700; width: 100%; font-size: 2.2rem;}
+
+    .nav{ width: 100%; display: flex; justify-content: center;
+        .nav-link{color: #666; margin-right: 20px; font-size: 1.1rem;
+            &:hover{color: #666;}
+        }
+    }
+
+    .nowSlide{width: 100%; margin-top: 60px; padding-left: 20px;
+
+        a{@include a_basic();
+            img{width: 100%; margin-bottom: 10px;}
+            h6{font-size: 0.9rem; margin-bottom: 15px;}
+            h5{font-weight: 800; font-size: 1.1rem; margin-bottom: 15px;}
+        }
+        .swiper-button-prev{display: none;}
+        .swiper-button-next{display: none;}
+        
+    }
+
+    .start{opacity: 0;}
+    .end{opacity: 1; transition: all .5s;}
+}
+
+
+
+.exhibition{padding: 80px 0; border-bottom: 1px solid #eee; 
+    
+    h1{font-weight: 700; width: 100%; font-size: 2.2rem;}
+
+    .exhibitionSlide{margin-top: 60px; text-align: center;
+        a{img{width: 100%;}}
+        h1{margin: 30px 0;}
+        h5 {color: #999;}
+        h5:last-of-type{margin-bottom: 30px;}
+        button{width: 200px; height: 50px; border-radius: 30px; @include solid(1px, #ddd);
+            background: transparent; font-weight: 500; transition: .5s;
+            &:hover{background: rgb(0,32,83); color: #fff;}
+        }
+    }
+}
+
+
+
+
+.recommend_title{ display: flex; justify-content: space-between;
+    h1{font-weight: 700; width: 100%; font-size: 2.2rem; margin-bottom: 30px;}
+
+    .more{width: 100px; height: 50px; border-radius: 30px; @include solid(1px, #ddd);
+        background: transparent; font-weight: 500; transition: .5s;
+        &:hover{background: rgb(0,32,83); color: #fff;}
+    }
+}
+
+.recommend{ padding: 80px 0;
+
+    .exhibitionSlide{ padding-left: 20px;
+        img{width: 100%; cursor: pointer;} 
+    }
+       
+}
+
+
+
+.community{padding: 80px 0;
+
+    .communitySlide{ margin-left: -300px;
+        img{width: 100%; margin-bottom: 30px;}
+        h5{font-weight: 800; display: flex; justify-content: space-between;
+            &:last-of-type{ margin-bottom: 30px;}
+            small{font-weight: 500; font-size: 0.8rem;}
+        }
+        h6{color: #999;}
+    }
+}
+
+
+
+.forCustomer{padding: 80px 0;
+
+    h1{text-align: center; font-weight: 700; width: 100%; font-size: 2.2rem;}
+
+    .forCustomerSlide{width: 100%; margin-top: 60px; padding-left: 20px;
+
+        a{@include a_basic();
+            img{width: 100%; margin-bottom: 10px;}
+            h6{font-size: 0.9rem; margin-bottom: 15px;}
+            h5{font-weight: 800; font-size: 1.1rem; margin-bottom: 15px;}
+        }
+        button{width: 100%; height: 40px; margin-top: 30px; border-radius: 20px; @include solid(1px, #ddd);
+            background: transparent; font-weight: 500; transition: .5s;
+            &:hover{@include solid(1px, #333);}
+        }
+    }
+}
+
+
+
+.insta{padding: 80px 0;
+
+    &>div{display: flex; justify-content: space-between; margin-bottom: 20px;
+        a{font-weight: 700; font-size: 1.8rem; color: #333; text-decoration: none;}
+    }
+
+    .insta_imgBox{display: flex; flex-wrap: wrap; 
+
+        &>a{width: 230px; height: 230px; margin-bottom: 30px; display: inline-block;}
+        &>a:first-of-type{
+            background-image: url("https://scontent.cdninstagram.com/v/t51.36329-15/387675411_1045740453403727_5678440510328932860_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=c4dd86&_nc_ohc=rghbOWF9U5AAX_A4_66&_nc_ht=scontent.cdninstagram.com&edm=ANo9K5cEAAAA&oh=00_AfAJDy5BP6u0hv-JyD4hY6fGlwckjq4rKVrufyynerU80w&oe=652C8FFF");
+            background-position: center; background-size: cover;
+        }
+        &>a:nth-of-type(2){
+            background-image: url("https://scontent.cdninstagram.com/v/t51.29350-15/386196614_188073220981080_8548177887010302996_n.heic?stp=dst-jpg&_nc_cat=107&ccb=1-7&_nc_sid=c4dd86&_nc_ohc=49uLkpt-BQYAX9iz3HP&_nc_ht=scontent.cdninstagram.com&edm=ANo9K5cEAAAA&oh=00_AfCOuDS5c-lingRYYonN2EOdwciE_Clo7VIO2bd3CfRuxg&oe=652C4E2A");
+            background-position: center; background-size: cover;
+        }
+        &>a:nth-of-type(3){
+            background-image: url("https://scontent.cdninstagram.com/v/t51.36329-15/385894506_294810790019399_4930770459317969853_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=c4dd86&_nc_ohc=2_WWHNXSNA0AX_fumrY&_nc_ht=scontent.cdninstagram.com&edm=ANo9K5cEAAAA&oh=00_AfBZaq9vPrsjVdb4z8huQgaNYI0EwS1AI0OIlxneB8rzxw&oe=652B9D02");
+            background-position: center; background-size: cover;
+        }
+        &>a:nth-of-type(4){
+            background-image: url("https://scontent.cdninstagram.com/v/t51.36329-15/383330717_804923908050122_1530292030281551755_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=c4dd86&_nc_ohc=1wJCQmjy_YQAX-I0kF1&_nc_ht=scontent.cdninstagram.com&edm=ANo9K5cEAAAA&oh=00_AfBq9IjsFaUFlEJI4bSyBoVq7ICt0LwAGb3F1-EDrI3ntQ&oe=652D117D");
+            background-position: center; background-size: cover;
+        }
+        &>a:nth-of-type(5){
+            background-image: url("https://scontent.cdninstagram.com/v/t51.36329-15/383741980_1721442705040206_9036848353945767732_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=c4dd86&_nc_ohc=hNDj1sRd83kAX_JXOhp&_nc_ht=scontent.cdninstagram.com&edm=ANo9K5cEAAAA&oh=00_AfCPACNexRNAoX6THJ8tijnHFM4_JWFJybye6rLUj-WMlw&oe=652CF50C");
+            background-position: center; background-size: cover;
+        }
+        &>a:nth-of-type(6){
+            background-image: url("https://scontent.cdninstagram.com/v/t51.29350-15/382496272_790620759420996_5272024014774811084_n.heic?stp=dst-jpg&_nc_cat=108&ccb=1-7&_nc_sid=c4dd86&_nc_ohc=lMCSt-faCqoAX-GezXA&_nc_ht=scontent.cdninstagram.com&edm=ANo9K5cEAAAA&oh=00_AfAJ5xVtd3hjUFuw5psJ3uiKR70uxoXnqDreA0y14SIp6A&oe=652B79E9");
+            background-position: center; background-size: cover;
+        }
+        &>a:nth-of-type(7){
+            background-image: url("https://scontent.cdninstagram.com/v/t51.29350-15/381445877_845756587254717_8613401833056802467_n.heic?stp=dst-jpg&_nc_cat=109&ccb=1-7&_nc_sid=c4dd86&_nc_ohc=A6aV97CAHIQAX81PAMM&_nc_ht=scontent.cdninstagram.com&edm=ANo9K5cEAAAA&oh=00_AfAbBNii4S9vzXwkEQYc-VqRgy6gQG5lwnUcXYCXz5KPWw&oe=652C3A7B");
+            background-position: center; background-size: cover;
+        }
+        &>a:nth-of-type(8){
+            background-image: url("https://scontent.cdninstagram.com/v/t51.36329-15/381194019_1280529972603076_3944019444224187660_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=c4dd86&_nc_ohc=WSBBfVzEnn0AX8pJcnx&_nc_ht=scontent.cdninstagram.com&edm=ANo9K5cEAAAA&oh=00_AfCcfmv8YdJLEZDm9icx0JBkNvLhVMn8cH0rcwRgXPv3og&oe=652C15EF");
+            background-position: center; background-size: cover;
+        }
+        &>a:nth-of-type(9){
+            background-image: url("https://scontent.cdninstagram.com/v/t51.29350-15/380474377_191539620622210_5296343763326530316_n.heic?stp=dst-jpg&_nc_cat=111&ccb=1-7&_nc_sid=c4dd86&_nc_ohc=mV-Rm9hkK0QAX8s1c4A&_nc_ht=scontent.cdninstagram.com&edm=ANo9K5cEAAAA&oh=00_AfCocJNE5RaRNnMnj7c7emEcMzVUqq5MI7C3pQrdpmRNzg&oe=652C783A");
+            background-position: center; background-size: cover;
+        }
+    }
+}
+
+
+@media (min-width:1281px) and (max-width:1600px) {
+    .mainSwiper {
+    
+        .swiper-slide {
+            .swiper_txt { width: 85%; top: 70%;
+                h1 { font-size: 2.8rem; }    
+                &.swiper_txt2{ top: 62%; }
+            }
+        }
+    
+        .swiper-scrollbar.swiper-scrollbar-horizontal { width: 79%; bottom: 6%; left: 7.5%; }    
+        .swiper-button-prev { top: 94%; left: 88%; }    
+        .swiper-button-next { top: 94%; left: 90%; }
+    }
+
+    .now{
+        .nowSlide{
+            .swiper-button-prev{display: block; color: #052c65; 
+                &::after {font-size: 2rem; }
+            }
+            .swiper-button-next{display: block; color: #052c65; 
+                &::after {font-size: 2rem; }
+            }
+        }
+    }
+}
+
+
+@media (min-width:1025px) and (max-width:1280px){
+    .mainSwiper {    
+        .swiper-slide {
+            .swiper_txt {width: 85%; top: 66%;
+    
+                h1 { font-size: 2.5rem; }    
+                .swiper_btn { border-radius: 30px; padding: 10px 30px; font-size: 0.9rem; }
+                &.swiper_txt2{ top: 57%; }
+            }
+        }
+    
+        .swiper-scrollbar.swiper-scrollbar-horizontal {
+            bottom: 10%; left: 7.5%; width: 78%;
+        }    
+        .swiper-button-prev { top: 90%; left: 87%; }    
+        .swiper-button-next { top: 90%; left: 90%; }
+    }
+}
+
+
+@media (min-width:851px) and (max-width:1024px) {
+    .mainSwiper {    
+        .swiper-slide {
+            .swiper_txt { width: 92%; top: 62%;
+
+                h1 { font-size: 2rem; }    
+                .swiper_btn { border-radius: 30px; padding: 8px 25px; font-size: 0.8rem; }
+                &.swiper_txt2{ top: 53%; }
+            }
+        }
+
+        .swiper-scrollbar.swiper-scrollbar-horizontal {
+            height: 0.1rem; width: 83%; bottom: 12%; left: 4.2%;
+        }
+        .swiper-button-prev { top: 88%; left: 90%; }
+        .swiper-button-next { top: 88%; left: 94%; }
+    }
+
+
+    .now{padding: 70px 0;
+        h1{ font-size: 2rem;}    
+        .nav{ .nav-link{font-size: 1rem;}}    
+        .nowSlide{margin-top: 50px;
+            a{
+                h6{font-size: 0.8rem;}
+                h5{font-size: 1rem;}
+            }            
+        }
+    }
+
+
+    .exhibition{padding: 70px 0;
+        h1{font-size: 2rem;}    
+        .exhibitionSlide{margin-top: 50px;
+            h5 {font-size: 1rem;}
+            button{width: 180px; height: 45px; font-size: 0.9rem; }
+        }
+    }    
+    
+    
+    .recommend_title{ 
+        h1{font-size: 2rem;}    
+        .more{font-size: 0.9rem;}
+    }  
+    
+    
+    .community{padding: 70px 0;
+        .communitySlide{
+            h5{font-size: 1.2rem;
+                small{font-size: 0.7rem;}
+            }
+            h6{font-size: 0.9rem;}
+        }
+    }    
+    
+    
+    .forCustomer{padding: 70px 0;
+    
+        h1{font-size: 2rem;}
+    
+        .forCustomerSlide{margin-top: 50px;
+            a{
+                h6{font-size: 0.8rem;}
+                h5{font-size: 1rem;}
+            }  
+            button{ font-size: 0.9rem;
+                &:hover{@include solid(1px, #333);}
+            }
+        }
+    }
+    
+    
+    
+    .insta{padding: 70px 0;}
+}
+
+
+@media (min-width:768px) and (max-width:850px) {
+    .mainSwiper {    
+        .swiper-slide {
+            .swiper_txt { width: 92%; top: 51%; 
+
+                h1 { font-size: 2rem;}    
+                .swiper_btn { border-radius: 30px; padding: 8px 25px; font-size: 0.8rem; }
+                &.swiper_txt2{ top: 40%; }
+            }
+        }
+
+        .swiper-scrollbar.swiper-scrollbar-horizontal {
+            height: 0.1rem; width: 78%; bottom: 13%; left: 4.2%;
+        }
+        .swiper-button-prev { top: 87%; left: 87%; }
+        .swiper-button-next { top: 87%; left: 93%; }
+    }
+
+
+    .now{padding: 70px 0;
+        h1{ font-size: 2rem;}    
+        .nav{ .nav-link{font-size: 1rem;}}    
+        .nowSlide{margin-top: 50px;
+            .now_txt{padding: 0 10px;}
+
+            a{
+                h6{font-size: 0.8rem;}
+                h5{font-size: 1rem;}
+            }            
+        }
+    }
+
+
+    .exhibition{padding: 70px 0;
+        h1{font-size: 2rem;}    
+        .exhibitionSlide{padding-left: 0px; margin-top: 50px;
+            h5 {font-size: 1rem;}
+            button{width: 180px; height: 45px; font-size: 0.9rem; }
+        }
+    }    
+    
+    
+    .recommend_title{ 
+        h1{font-size: 2rem;}    
+        .more{font-size: 0.9rem;}
+    }  
+
+    .recommend{ padding: 70px 0;}
+    
+    
+    .community{padding: 70px 0;
+        .communitySlide{
+            h5{font-size: 1.2rem;
+                small{font-size: 0.7rem;}
+            }
+            h6{font-size: 0.9rem;}
+        }
+    }    
+    
+    
+    .forCustomer{padding: 70px 0;
+    
+        h1{font-size: 2rem;}
+    
+        .forCustomerSlide{margin-top: 50px;
+            .forCustomer_txt{padding: 0 10px;}
+
+            a{
+                h6{font-size: 0.8rem;}
+                h5{font-size: 1rem;}
+            }  
+            button{ font-size: 0.9rem;
+                &:hover{@include solid(1px, #333);}
+            }
+        }
+    }
+    
+    
+    
+    .insta{padding: 70px 0;
+    
+        &>div{margin-bottom: 20px;
+            a{font-size: 1.8rem;}
+        }
+    }
+}
+
+
+@media (min-width:500px) and (max-width:767px) {
+    .mainSwiper {    
+        .swiper-slide {
+            .swiper_txt { width: 89%; top: 60%; 
+
+                h1 { font-size: 2rem; }    
+                .swiper_btn { border-radius: 30px; padding: 8px 25px; font-size: 0.8rem; }
+                &.swiper_txt2{ top: 48%; }
+            }
+        }
+
+        .swiper-scrollbar.swiper-scrollbar-horizontal { display: none;}
+        .swiper-button-prev { display: none; }
+        .swiper-button-next { display: none; }
+    }
+
+
+    .now{padding: 70px 0;
+        h1{ font-size: 2rem;}    
+        .nav{ .nav-link{font-size: 1rem;}}    
+        .nowSlide{margin-top: 50px; padding-left: 0px;
+            .now_txt{padding: 0 10px;}
+
+            a{
+                h6{font-size: 0.8rem;}
+                h5{font-size: 1rem;}
+            }            
+        }
+    }
+
+
+    .exhibition{padding: 70px 0;
+        h1{font-size: 2rem;}    
+        .exhibitionSlide{padding-left: 0px; margin-top: 50px;
+            h5 {font-size: 1rem;}
+            button{width: 180px; height: 45px; font-size: 0.9rem; }
+        }
+    }    
+    
+    
+    .recommend_title{ 
+        h1{font-size: 2rem;}    
+        .more{font-size: 0.9rem;}
+    }  
+
+    .recommend{ padding: 70px 0;
+        .exhibitionSlide{ padding: 15px;}           
+    }
+    
+    
+    .community{padding: 70px 0;
+        .communitySlide{ margin-left: 0px;
+            .community_txt{padding: 0 10px;}
+            h5{font-size: 1.2rem;
+                small{font-size: 0.7rem;}
+            }
+            h6{font-size: 0.9rem;}
+        }
+    }    
+    
+    
+    .forCustomer{padding: 70px 0;
+    
+        h1{font-size: 2rem;}
+    
+        .forCustomerSlide{margin-top: 50px; padding-left: 0px;
+            .forCustomer_txt{padding: 0 10px;}
+
+            a{
+                h6{font-size: 0.8rem;}
+                h5{font-size: 1rem;}
+            }  
+            button{ font-size: 0.9rem;
+                &:hover{@include solid(1px, #333);}
+            }
+        }
+    }    
+    
+    
+    .insta{padding: 70px 0;}
+}
+
+
+
+@media (max-width:499px) {
+    .mainSwiper {    
+        .swiper-slide {
+            .swiper_txt { width: 89%; top: 51%; 
+
+                h1 { font-size: 2rem; display: none; }    
+                .swiper_btn { border-radius: 30px; padding: 8px 25px; font-size: 0.8rem; }
+                &.swiper_txt2{ top: 51%;  }
+            }
+        }
+
+        .swiper-scrollbar.swiper-scrollbar-horizontal { display: none;}
+        .swiper-button-prev { display: none; }
+        .swiper-button-next { display: none; }
+    }    
+
+
+    .now{padding: 70px 0;
+        h1{ font-size: 2rem;}    
+        .nav{ .nav-link{font-size: 1rem;}}    
+        .nowSlide{margin-top: 50px; padding-left: 0px;
+            .now_txt{padding: 0 10px;}
+
+            a{
+                h6{font-size: 0.8rem;}
+                h5{font-size: 1rem;}
+            }            
+        }
+    }
+
+
+    .exhibition{padding: 70px 0;
+        h1{font-size: 2rem;}    
+        .exhibitionSlide{padding-left: 0px; margin-top: 50px;
+            h5 {font-size: 1rem;}
+            button{width: 180px; height: 45px; font-size: 0.9rem; }
+        }
+    }    
+    
+    
+    .recommend_title{ 
+        h1{font-size: 2rem;}    
+        .more{font-size: 0.9rem;}
+    }  
+
+    .recommend{ padding: 70px 0;
+        .exhibitionSlide{ padding: 15px;}           
+    }
+    
+    
+    .community{padding: 70px 0;
+        .communitySlide{ margin-left: 0px;
+            .community_txt{padding: 0 10px;}
+            h5{font-size: 1.2rem;
+                small{font-size: 0.7rem;}
+            }
+            h6{font-size: 0.9rem;}
+        }
+    }    
+    
+    
+    .forCustomer{padding: 70px 0;
+    
+        h1{font-size: 2rem;}
+    
+        .forCustomerSlide{margin-top: 50px; padding-left: 0px;
+            .forCustomer_txt{padding: 0 10px;}
+
+            a{
+                h6{font-size: 0.8rem;}
+                h5{font-size: 1rem;}
+            }  
+            button{ font-size: 0.9rem;
+                &:hover{@include solid(1px, #333);}
+            }
+        }
+    }    
+    
+    
+    .insta{padding: 70px 0;
+        .insta_imgBox{justify-content: center;}
+    }
+}
