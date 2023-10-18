@@ -11,25 +11,11 @@ import Exhibition from '../components/Exhibition';
 import Recommend from '../components/Recommend';
 import Community from '../components/Community';
 import ForCustomer from '../components/ForCustomer';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
-import { useRef } from 'react';
 import { useEffect } from 'react';
 
 const Home = (props) => {
+    let { moterCoreData } = props;
     let [tab, setTab] = useState(0);
-
-    const [scrollPosition, setScrollPosition] = useState(0);
-    const updateScroll = () => {
-        setScrollPosition(window.scrollY || document.documentElement.scrollTop);
-    }
-    useEffect(() => {
-        window.addEventListener('scroll', updateScroll);
-        return () => {
-            window.removeEventListener('scroll', updateScroll);
-        }
-    }, []);
-    let display = scrollPosition > 100 ? { display: 'block' } : { display: 'none' };
 
 
     return (
@@ -104,7 +90,7 @@ const Home = (props) => {
                     </Nav.Item>
                 </Nav>
 
-                <NowTab tab={tab} />
+                <NowTab tab={tab} moterCoreData={moterCoreData} />
             </div>
             
 
@@ -170,25 +156,6 @@ const Home = (props) => {
                     <a href='#'></a>
                 </div>
             </Container>
-
-
-
-            <div className='scroll' style={display}>
-                <a href='#' className='goTop'>
-                    <FontAwesomeIcon icon={faArrowUp} />
-                </a>
-
-                <a href="#" className='goTop kakao'>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50">
-                        <g id="btn_kakao" transform="translate(-330)">
-                            <circle id="타원_73" data-name="타원 73" cx="25" cy="25" r="25" transform="translate(330)" fill="#fedc00"></circle>
-                            <g id="그룹_18" data-name="그룹 18" transform="translate(345 15)">
-                                <path id="패스_8" data-name="패스 8" d="M192.79,193.223c-5.868,0-10.625,3.782-10.625,8.447a8.127,8.127,0,0,0,4.614,6.966l-.768,4.118a.236.236,0,0,0,.362.241l4.564-3.006s1.221.128,1.853.128c5.868,0,10.625-3.782,10.625-8.447s-4.757-8.447-10.625-8.447" transform="translate(-182.165 -193.223)" fill="#3c1e1e"></path>
-                            </g>
-                        </g>
-                    </svg>
-                </a>
-            </div>
         </>
     )
 }

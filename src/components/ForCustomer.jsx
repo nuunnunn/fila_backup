@@ -45,11 +45,11 @@ const ForCustomer = () => {
         {
             forCustomerData[0].map((v,i)=> 
                 <SwiperSlide key={i} className='cancelBasic'>
-                    <a href='#'>
+                    <a>
                         <img src={v.imgUrl} alt="shell jacket" />
                     </a>
                     <div className='forCustomer_txt'>
-                        <a href='#'>
+                        <a>
                             <h6>{v.type}</h6>
                             <h5>{v.name}</h5>
                         </a>

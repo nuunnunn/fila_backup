@@ -5,21 +5,21 @@ import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import {useNavigate} from 'react-router-dom'
 
 import wind_data from '../wind_data';
 import fBox_data from '../fBox_data';
 import trend_data from '../trend_data';
 import tennis_data from '../tennis_data';
-import motorCore_data from '../motorCore_data';
 import kids_data from '../kids_data';
 
 const NowTab = (props) => {
-    let { tab } = props;
+    const navigate = useNavigate();
+    let { tab, moterCoreData} = props;
     let windData = useState(wind_data);
     let fBoxData = useState(fBox_data);
     let trendData = useState(trend_data);
     let tennisData = useState(tennis_data);
-    let moterCoreData = useState(motorCore_data);
     let kidsData = useState(kids_data);
 
     let [fade, setFade] = useState('');
@@ -63,14 +63,11 @@ const NowTab = (props) => {
                 {[
                     moterCoreData[0].map((v, i) =>
                         <SwiperSlide key={i}>
-                            <a href='#'>
-                                <img src={v.imgUrl} alt="shell jacket" />
-                            </a>
+                            <img src={v.imgUrl} alt="shell jacket" onClick={()=>{navigate(`/detail/${i}`)}} />
+                           
                             <div className='now_txt'>
-                                <a href='#'>
-                                    <h6>{v.type}</h6>
-                                    <h5>{v.name}</h5>
-                                </a>
+                                <h6>{v.type}</h6>
+                                <h5 onClick={()=>{navigate(`/detail/${i}`)}}>{v.name}</h5>
                                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                                     <h6>{v.price}</h6>
                                     <FontAwesomeIcon icon={faHeart} style={{ color: '#ccc' }} />
@@ -79,12 +76,12 @@ const NowTab = (props) => {
                         </SwiperSlide>
                     ),
                     windData[0].map((v, i) =>
-                        <SwiperSlide key={i}>
-                            <a href='#'>
+                        <SwiperSlide key={i} onClick={()=>{navigate(`/detail/${i}`)}}>
+                            <a>
                                 <img src={v.imgUrl} alt="shell jacket" />
                             </a>
                             <div className='now_txt'>
-                                <a href='#'>
+                                <a>
                                     <h6>{v.type}</h6>
                                     <h5>{v.name}</h5>
                                 </a>
@@ -97,11 +94,11 @@ const NowTab = (props) => {
                     ),
                     fBoxData[0].map((v, i) =>
                         <SwiperSlide key={i}>
-                            <a href='#'>
+                            <a href='/detail'>
                                 <img src={v.imgUrl} alt="shell jacket" />
                             </a>
                             <div className='now_txt'>
-                                <a href='#'>
+                                <a href='/detail'>
                                     <h6>{v.type}</h6>
                                     <h5>{v.name}</h5>
                                 </a>
@@ -114,11 +111,11 @@ const NowTab = (props) => {
                     ),
                     trendData[0].map((v, i) =>
                         <SwiperSlide key={i}>
-                            <a href='#'>
+                            <a href='/detail'>
                                 <img src={v.imgUrl} alt="shell jacket" />
                             </a>
                             <div className='now_txt'>
-                                <a href='#'>
+                                <a href='/detail'>
                                     <h6>{v.type}</h6>
                                     <h5>{v.name}</h5>
                                 </a>
@@ -131,11 +128,11 @@ const NowTab = (props) => {
                     ),
                     tennisData[0].map((v, i) =>
                         <SwiperSlide key={i}>
-                            <a href='#'>
+                            <a href='/detail'>
                                 <img src={v.imgUrl} alt="shell jacket" />
                             </a>
                             <div className='now_txt'>
-                                <a href='#'>
+                                <a href='/detail'>
                                     <h6>{v.type}</h6>
                                     <h5>{v.name}</h5>
                                 </a>
@@ -148,11 +145,11 @@ const NowTab = (props) => {
                     ),
                     kidsData[0].map((v, i) =>
                         <SwiperSlide key={i}>
-                            <a href='#'>
+                            <a href='/detail'>
                                 <img src={v.imgUrl} alt="shell jacket" />
                             </a>
                             <div className='now_txt'>
-                                <a href='#'>
+                                <a href='/detail'>
                                     <h6>{v.type}</h6>
                                     <h5>{v.name}</h5>
                                 </a>

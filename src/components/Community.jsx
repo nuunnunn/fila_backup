@@ -44,7 +44,7 @@ const Community = () => {
         {
             communityData[0].map((v,i)=> 
             <SwiperSlide key={i}>
-                <a href='#'>
+                <a>
                     <img src={v.imgUrl} alt="shell jacket" />
                 </a>    
                 <div className='community_txt'>

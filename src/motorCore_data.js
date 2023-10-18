@@ -4,7 +4,15 @@ let motorCore_data = [
         type: '여성 라이프스타일',
         name: '모터코어 컬러블럭 패딩자켓',
         price: '239,000원',
-        imgUrl: '/img/motorcore1.jpg'
+        imgUrl: '/img/motorcore1.jpg',
+        imgUrl2: '/img/motorcore1_detail1.jpg',
+        imgUrl3: '/img/motorcore1_detail2.jpg',
+        imgUrl4: '/img/motorcore1_detail3.jpg',
+        imgUrl5: '/img/motorcore1_detail4.jpg',
+        imgUrl6: '/img/motorcore1_detail5.jpg',
+        imgUrl7: '/img/motorcore1_detail6.jpg',
+        imgUrl8: '/img/motorcore1_detail7.jpg',
+        video: "/img/banner2.mp4"
     },
     {
         id: 1,

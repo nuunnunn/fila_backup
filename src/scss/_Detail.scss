@@ -1,0 +1,22 @@
+@use "reset";
+
+.detail_wrap{max-width: 1850px !important; padding-top: 100px;}
+
+.detail_left{
+
+    .d_left_top{ display: flex; 
+
+        .d_l_t_left{display: flex; flex-wrap: wrap; width: 50%; margin-right: 8px;
+            img{width: 100%; margin-bottom: 8px;}
+        }
+
+        .d_l_t_right{ width: 50%; height: 72.6vh; top: 0; position: sticky; overflow: hidden; margin-bottom: 6px;
+            & > video{width: 237%; height: 100%; position: absolute; top: 50%; left: 50%; 
+                transform: translate(-50%,-50%);
+            }
+        }
+    }
+}
+
+
+.detail_right{position: sticky; top: 0;}
