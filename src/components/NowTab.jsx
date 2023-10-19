@@ -12,6 +12,7 @@ import fBox_data from '../fBox_data';
 import trend_data from '../trend_data';
 import tennis_data from '../tennis_data';
 import kids_data from '../kids_data';
+import { NavLink } from 'react-bootstrap';
 
 const NowTab = (props) => {
     const navigate = useNavigate();
@@ -61,7 +62,41 @@ const NowTab = (props) => {
                 className="mySwiper"
             >
                 {[
-                    moterCoreData[0].map((v, i) =>
+                    moterCoreData.map((v, i) =>
+                        <SwiperSlide key={i}>
+                            <NavLink href={`/detail/${i}`}>
+                                <img src={v.imgUrl} alt="shell jacket" 
+                                    // onClick={()=>{
+                                    // navigate(`/detail/${i}`);
+                                    // }} 
+                                />
+                            </NavLink>
+                           
+                            <div className='now_txt'>
+                                <h6>{v.type}</h6>
+                                <h5 onClick={()=>{navigate(`/detail/${i}`)}}>{v.name}</h5>
+                                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                    <h6>{v.price}</h6>
+                                    <FontAwesomeIcon icon={faHeart} style={{ color: '#ccc' }} />
+                                </div>
+                            </div>
+                        </SwiperSlide>
+                    ),
+                    windData[0].map((v, i) =>
+                        <SwiperSlide key={i}>
+                            <img src={v.imgUrl} alt="shell jacket" onClick={()=>{navigate(`/detail/${i}`)}} />
+
+                            <div className='now_txt'>
+                                <h6>{v.type}</h6>
+                                <h5 onClick={()=>{navigate(`/detail/${i}`)}}>{v.name}</h5>                  
+                                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                    <h6>{v.price}</h6>
+                                    <FontAwesomeIcon icon={faHeart} style={{ color: '#ccc' }} />
+                                </div>
+                            </div>
+                        </SwiperSlide>
+                    ),
+                    fBoxData[0].map((v, i) =>
                         <SwiperSlide key={i}>
                             <img src={v.imgUrl} alt="shell jacket" onClick={()=>{navigate(`/detail/${i}`)}} />
                            
@@ -75,50 +110,13 @@ const NowTab = (props) => {
                             </div>
                         </SwiperSlide>
                     ),
-                    windData[0].map((v, i) =>
-                        <SwiperSlide key={i} onClick={()=>{navigate(`/detail/${i}`)}}>
-                            <a>
-                                <img src={v.imgUrl} alt="shell jacket" />
-                            </a>
-                            <div className='now_txt'>
-                                <a>
-                                    <h6>{v.type}</h6>
-                                    <h5>{v.name}</h5>
-                                </a>
-                                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                    <h6>{v.price}</h6>
-                                    <FontAwesomeIcon icon={faHeart} style={{ color: '#ccc' }} />
-                                </div>
-                            </div>
-                        </SwiperSlide>
-                    ),
-                    fBoxData[0].map((v, i) =>
-                        <SwiperSlide key={i}>
-                            <a href='/detail'>
-                                <img src={v.imgUrl} alt="shell jacket" />
-                            </a>
-                            <div className='now_txt'>
-                                <a href='/detail'>
-                                    <h6>{v.type}</h6>
-                                    <h5>{v.name}</h5>
-                                </a>
-                                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                    <h6>{v.price}</h6>
-                                    <FontAwesomeIcon icon={faHeart} style={{ color: '#ccc' }} />
-                                </div>
-                            </div>
-                        </SwiperSlide>
-                    ),
                     trendData[0].map((v, i) =>
                         <SwiperSlide key={i}>
-                            <a href='/detail'>
-                                <img src={v.imgUrl} alt="shell jacket" />
-                            </a>
+                            <img src={v.imgUrl} alt="shell jacket" onClick={()=>{navigate(`/detail/${i}`)}} />
+                           
                             <div className='now_txt'>
-                                <a href='/detail'>
-                                    <h6>{v.type}</h6>
-                                    <h5>{v.name}</h5>
-                                </a>
+                                <h6>{v.type}</h6>
+                                <h5 onClick={()=>{navigate(`/detail/${i}`)}}>{v.name}</h5>
                                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                                     <h6>{v.price}</h6>
                                     <FontAwesomeIcon icon={faHeart} style={{ color: '#ccc' }} />
@@ -128,14 +126,11 @@ const NowTab = (props) => {
                     ),
                     tennisData[0].map((v, i) =>
                         <SwiperSlide key={i}>
-                            <a href='/detail'>
-                                <img src={v.imgUrl} alt="shell jacket" />
-                            </a>
+                            <img src={v.imgUrl} alt="shell jacket" onClick={()=>{navigate(`/detail/${i}`)}} />
+                           
                             <div className='now_txt'>
-                                <a href='/detail'>
-                                    <h6>{v.type}</h6>
-                                    <h5>{v.name}</h5>
-                                </a>
+                                <h6>{v.type}</h6>
+                                <h5 onClick={()=>{navigate(`/detail/${i}`)}}>{v.name}</h5>
                                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                                     <h6>{v.price}</h6>
                                     <FontAwesomeIcon icon={faHeart} style={{ color: '#ccc' }} />
@@ -145,14 +140,11 @@ const NowTab = (props) => {
                     ),
                     kidsData[0].map((v, i) =>
                         <SwiperSlide key={i}>
-                            <a href='/detail'>
-                                <img src={v.imgUrl} alt="shell jacket" />
-                            </a>
+                            <img src={v.imgUrl} alt="shell jacket" onClick={()=>{navigate(`/detail/${i}`)}} />
+                           
                             <div className='now_txt'>
-                                <a href='/detail'>
-                                    <h6>{v.type}</h6>
-                                    <h5>{v.name}</h5>
-                                </a>
+                                <h6>{v.type}</h6>
+                                <h5 onClick={()=>{navigate(`/detail/${i}`)}}>{v.name}</h5>
                                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                                     <h6>{v.price}</h6>
                                     <FontAwesomeIcon icon={faHeart} style={{ color: '#ccc' }} />

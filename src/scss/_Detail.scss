@@ -1,6 +1,8 @@
 @use "reset";
 
-.detail_wrap{max-width: 1850px !important; padding-top: 100px;}
+.detail_wrap{max-width: 1855px !important; padding-top: 100px;}
+.col-md-7{width: 63% !important;}
+.col-md-5{width: 37% !important;}
 
 .detail_left{
 
@@ -10,13 +12,134 @@
             img{width: 100%; margin-bottom: 8px;}
         }
 
-        .d_l_t_right{ width: 50%; height: 72.6vh; top: 0; position: sticky; overflow: hidden; margin-bottom: 6px;
-            & > video{width: 237%; height: 100%; position: absolute; top: 50%; left: 50%; 
+        .d_l_t_right{ width: 50%; height: 78.7vh; top: 100px; position: sticky; overflow: hidden; margin-bottom: 6px;
+            & > video{width: 100%; position: absolute; top: 50%; left: 50%; 
                 transform: translate(-50%,-50%);
+            }
+        }
+    }
+
+    .d_left_bottom{display: flex; justify-content: center; flex-wrap: wrap;
+        img{margin-bottom: 100px; width: 80%;}
+        h4{font-weight: 700; width: 100%; text-align: center;}
+
+        &>div{ width: 80%; margin-bottom: 20px;
+            p{font-size: 0.85rem; font-weight: 600;}
+            .graph{width: 100%; background: #eee; height: 10px; border-radius: 5px; display: flex;
+                justify-content: space-between; 
+                .circle{width: 10px; height: 100%; background: #ccc; border-radius: 5px;}
+                .bkCircle{background: #333;}
+            }
+            .graph_txt{display: flex; justify-content: space-between;}
+        }
+
+        &>p{width: 80%; text-align: right; font-size: 0.9rem; color: #999; font-weight: 500;
+            &::after{content: '!'; background: #333; color: #fff; padding: 2px 8px; border-radius: 10px;
+            margin-left: 5px;}
+        }
+
+        .table{@include solid(1px,#ccc);
+            td{line-height: 40px; font-size: 0.9rem;
+                &:first-child{width: 19%; background: #333; color: #fff; }
+                &:nth-child(2){box-shadow: inset 4px 0 4px -2px rgba(0,0,0,0.30);}
+                &:nth-child(2),&:nth-child(3){border-right: 1px solid #ccc;}
             }
         }
     }
 }
 
 
-.detail_right{position: sticky; top: 0;}
+.detail_right{position: sticky; top: 100px; display: flex; height: 90vh; padding-right: 0 !important;
+
+    .d_r_left{width: calc((100% + 40px) / 2 - 40px); padding-left: 15px;
+    
+        &>div{display: flex; justify-content: space-between;}
+        span{ font-size: 0.85rem; font-weight: 500; }
+        h3{margin: 20px 0 20px 0; font-weight: 700;}
+        p{font-weight: 500;
+            &:not(:first-of-type){font-size: 0.89rem;}
+            &:first-of-type{margin-bottom: 50px;}
+            &:nth-of-type(2),p:nth-of-type(3),p:nth-of-type(4){margin-bottom: 30px;}
+            &:nth-of-type(5){margin-bottom: 0px;}
+            &:last-of-type{text-decoration: underline; cursor: pointer;}
+            &:nth-of-type(5),&:nth-of-type(6),&:last-of-type{color: #999; font-weight: 600; font-size: 0.87rem;}
+        }
+    }
+
+    .d_r_right{width: calc((100% + 40px) / 2 - 40px); height: 100%; padding-left: 30px; flex-basis: 50%; 
+        overflow-y: scroll;
+        &::-webkit-scrollbar{display: none;}
+        
+        h6{font-weight: 800; font-size: 0.85rem; margin-bottom: 20px;}
+        img:first-of-type, img:nth-of-type(2){width: 28%; margin-right: 5px;}
+        &>div{display: flex; justify-content: space-between; margin-top: 30px; flex-wrap: wrap;
+            h6:last-of-type{text-decoration: underline; font-weight: 500; cursor: pointer;}
+            p{font-weight: 800;}
+            &:nth-of-type(2){margin: 15px 0;}
+            &:nth-of-type(3){ margin: 10px 0 30px;
+                &>button{width: 70%; height: 60px; background: transparent; @include solid(1px,#333);
+                    border-radius: 30px; font-weight: 600; font-size: 1.1rem;
+                    transition: .3s;
+                    &:hover{background: $navy; color: #fff;}
+                }
+            }
+            &:nth-of-type(4),&:nth-of-type(5),&:nth-of-type(6){
+                border-bottom: 1px solid #eee; cursor: pointer;
+                p{font-weight: 500;}
+            }     
+            &:last-of-type{ display: block; margin: 20px 0;              
+                span{font-size: 0.85rem; color: #888; text-decoration: underline; margin-right: 10px;}
+            }
+        }  
+        .newMember{
+            p{font-size: 0.9rem; font-weight: 500;}
+        } 
+
+        input[type=radio]{display: none;}
+        input[type=radio]+label{display: inline-block; cursor: pointer; padding: 15px 15px; border-radius: 5px;
+            @include solid(1px,#eee); background: transparent; margin-right: 5px; font-size: 0.85rem;
+            font-weight: 500;
+        }
+        input[type=radio]:checked+label{background: $navy; color: #fff;}
+
+        table{margin-top: 40px; width: 100%; @include solid(1px,#eee); height: 50px;
+            th{width: 30%;
+                &:nth-of-type(2){font-weight: 600; font-size: 0.9rem;
+                    input[type=text]{border: none; outline: none; text-align: center;}
+                }
+                &:first-of-type{text-align: left; padding-left: 20px; cursor: pointer;}
+                &:last-of-type{text-align: right; padding-right: 20px; cursor: pointer;}
+            }
+        }
+
+        &>button{width: 100%; height: 60px; background: $navy; color: #fff; border: none;
+            border-radius: 30px; font-weight: 600; font-size: 1.1rem;
+            transition: .2s;
+            &:hover{background: rgb(1, 40, 102)}
+        }
+        .heart{@include solid(1px,#eee); padding: 17px; font-size: 1.3rem; border-radius: 27px;}
+    }
+}
+
+
+.detail_under{ padding-top: 100px;
+    h1{font-weight: 700; font-size: 2.2rem; text-align: center;}
+
+    
+    .detail_swiper{width: 100%;
+        .swiper-slide{ padding: 60px 0;
+            img{width: 100%; margin-bottom: 10px; cursor: pointer;}
+            h6{font-size: 0.9rem; margin-bottom: 15px;}
+            h5{font-weight: 800; font-size: 1.1rem; margin-bottom: 15px;}
+            button{width: 100%; height: 40px; margin-top: 30px; border-radius: 20px; @include solid(1px, #ddd);
+                background: transparent; font-weight: 500; transition: .5s;
+                &:hover{@include solid(1px, #333);}
+            }
+        }
+        .swiper-button-prev{display: none;}
+        .swiper-button-next{display: none;}
+        .swiper-scrollbar.swiper-scrollbar-horizontal{width: 80%; left: 9%; height: 2px;
+            .swiper-scrollbar-drag{background: #333;}
+        }
+    }
+}

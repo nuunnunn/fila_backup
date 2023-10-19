@@ -110,7 +110,7 @@
         h5:last-of-type{margin-bottom: 30px;}
         button{width: 200px; height: 50px; border-radius: 30px; @include solid(1px, #ddd);
             background: transparent; font-weight: 500; transition: .5s;
-            &:hover{background: rgb(0,32,83); color: #fff;}
+            &:hover{background: $navy; color: #fff;}
         }
         .swiper-button-prev{display: none;}
         .swiper-button-next{display: none;}
@@ -125,7 +125,7 @@
 
     .more{width: 100px; height: 50px; border-radius: 30px; @include solid(1px, #ddd);
         background: transparent; font-weight: 500; transition: .5s;
-        &:hover{background: rgb(0,32,83); color: #fff;}
+        &:hover{background: $navy; color: #fff;}
     }
 }
 

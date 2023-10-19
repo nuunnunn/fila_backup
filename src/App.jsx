@@ -8,12 +8,14 @@ import { useRef, useState } from 'react';
 import { useEffect } from 'react';
 import Detail from './components/Detail';
 import Home from './routes/Home';
+import { useSelector } from 'react-redux';
 
 
 import motorCore_data from './motorCore_data';
 
 function App() {  
   let moterCoreData = useState(motorCore_data);
+  let state = useSelector((state)=>state)
   // let [res, setRes] = useState([0,1,2,3,4,5,6,7]);
 
   //위로가기 버튼
@@ -92,8 +94,7 @@ function App() {
     logIn.current.innerHTML = `<img src="data:image/svg+xml,%3Csvg id='Mypage' xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cg id='사각형_50' data-name='사각형 50' transform='translate(7)' fill='none' stroke='%23fff' stroke-width='2'%3E%3Crect width='10' height='10' rx='4' stroke='none'/%3E%3Crect x='1' y='1' width='8' height='8' rx='3' fill='none'/%3E%3C/g%3E%3Cg id='사각형_52' data-name='사각형 52' transform='translate(0 12)' fill='none' stroke='%23fff' stroke-width='2'%3E%3Cpath d='M4,0H20a4,4,0,0,1,4,4v8a0,0,0,0,1,0,0H0a0,0,0,0,1,0,0V4A4,4,0,0,1,4,0Z' stroke='none'/%3E%3Cpath d='M4,1H20a3,3,0,0,1,3,3v7a0,0,0,0,1,0,0H1a0,0,0,0,1,0,0V4A3,3,0,0,1,4,1Z' fill='none'/%3E%3C/g%3E%3C/svg%3E%0A"/>`
   }
 
-  useEffect(() => {
-    
+  useEffect(() => {        
     if (window.location.pathname != '/') {
       // if (window.location.href.indexOf('detail')>0) {
       setNavPosition({position:'fixed'});
@@ -258,7 +259,7 @@ function App() {
             </Container>
           </div>
 
-          <div className='opacity_block' onMouseOut={() => {
+          <div className='opacity_block' onMouseOver={() => {
             if (window.location.pathname === '/') {
               navMouseOut()
             } else {
@@ -273,7 +274,7 @@ function App() {
 
 
       <Routes>
-        <Route path='/' element={<Home moterCoreData={moterCoreData} />} />
+        <Route path='/' element={<Home moterCoreData={moterCoreData[0]} />} />
         <Route path='/product'  />
         <Route path='/detail/:id' element={<Detail moterCoreData={moterCoreData[0]} />} />
       </Routes>
