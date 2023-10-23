@@ -13,10 +13,12 @@ import trend_data from '../trend_data';
 import tennis_data from '../tennis_data';
 import kids_data from '../kids_data';
 import { NavLink } from 'react-bootstrap';
+import { useSelector } from 'react-redux';
 
 const NowTab = (props) => {
     const navigate = useNavigate();
-    let { tab, moterCoreData} = props;
+    let tab = useSelector(state => state.tab)
+    let { moterCoreData} = props;
     let windData = useState(wind_data);
     let fBoxData = useState(fBox_data);
     let trendData = useState(trend_data);
@@ -27,7 +29,7 @@ const NowTab = (props) => {
     useEffect(() => {
         setTimeout(() => { setFade(' end') }, 50);
         return () => { setFade('') }
-    }, [tab]);
+    }, [tab.value]);
 
 
     return (
@@ -76,7 +78,7 @@ const NowTab = (props) => {
                                 <h6>{v.type}</h6>
                                 <h5 onClick={()=>{navigate(`/detail/${i}`)}}>{v.name}</h5>
                                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                    <h6>{v.price}</h6>
+                                    <h6>{v.price.toLocaleString()}원</h6>
                                     <FontAwesomeIcon icon={faHeart} style={{ color: '#ccc' }} />
                                 </div>
                             </div>
@@ -84,7 +86,9 @@ const NowTab = (props) => {
                     ),
                     windData[0].map((v, i) =>
                         <SwiperSlide key={i}>
-                            <img src={v.imgUrl} alt="shell jacket" onClick={()=>{navigate(`/detail/${i}`)}} />
+                            <NavLink href={`/detail/${i}`}>
+                                <img src={v.imgUrl} alt="shell jacket" />
+                            </NavLink>
 
                             <div className='now_txt'>
                                 <h6>{v.type}</h6>
@@ -97,8 +101,10 @@ const NowTab = (props) => {
                         </SwiperSlide>
                     ),
                     fBoxData[0].map((v, i) =>
-                        <SwiperSlide key={i}>
-                            <img src={v.imgUrl} alt="shell jacket" onClick={()=>{navigate(`/detail/${i}`)}} />
+                        <SwiperSlide key={i}>                            
+                            <NavLink href={`/detail/${i}`}>
+                                <img src={v.imgUrl} alt="shell jacket" />
+                            </NavLink>
                            
                             <div className='now_txt'>
                                 <h6>{v.type}</h6>
@@ -112,7 +118,9 @@ const NowTab = (props) => {
                     ),
                     trendData[0].map((v, i) =>
                         <SwiperSlide key={i}>
-                            <img src={v.imgUrl} alt="shell jacket" onClick={()=>{navigate(`/detail/${i}`)}} />
+                            <NavLink href={`/detail/${i}`}>
+                                <img src={v.imgUrl} alt="shell jacket" />
+                            </NavLink>
                            
                             <div className='now_txt'>
                                 <h6>{v.type}</h6>
@@ -126,7 +134,9 @@ const NowTab = (props) => {
                     ),
                     tennisData[0].map((v, i) =>
                         <SwiperSlide key={i}>
-                            <img src={v.imgUrl} alt="shell jacket" onClick={()=>{navigate(`/detail/${i}`)}} />
+                            <NavLink href={`/detail/${i}`}>
+                                <img src={v.imgUrl} alt="shell jacket" />
+                            </NavLink>
                            
                             <div className='now_txt'>
                                 <h6>{v.type}</h6>
@@ -140,7 +150,9 @@ const NowTab = (props) => {
                     ),
                     kidsData[0].map((v, i) =>
                         <SwiperSlide key={i}>
-                            <img src={v.imgUrl} alt="shell jacket" onClick={()=>{navigate(`/detail/${i}`)}} />
+                        <NavLink href={`/detail/${i}`}>
+                            <img src={v.imgUrl} alt="shell jacket" />
+                        </NavLink>
                            
                             <div className='now_txt'>
                                 <h6>{v.type}</h6>
@@ -151,9 +163,7 @@ const NowTab = (props) => {
                                 </div>
                             </div>
                         </SwiperSlide>
-                    )][tab]
-
-
+                    )][tab.value]
                 }
             </Swiper>
         </div>

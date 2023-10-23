@@ -1,5 +1,9 @@
 @charset "utf-8";
-@import "reset",'Home','Detail';
+@import '~bootstrap/scss/bootstrap';
+@import "reset",'Home','Detail',"Cart";
+
+.container-fluid{padding-right: 0;}
+
 
 .App { 
   .scroll{position: sticky; width: 80px; left: 96%; bottom: 2%; z-index: 20; padding: 0 10px 10px 0;
@@ -30,7 +34,7 @@
 
     .navbar-toggler{border: none; 
       &:focus{box-shadow:none;}
-      .navbar-toggler-icon{filter: invert(100%);}
+      // .navbar-toggler-icon{filter: invert(100%);}
     }
 
 
@@ -363,4 +367,7 @@
       }    
     }
   }
+}
+@media (max-width:768px){
+  .container-fluid{padding-right: 10px;}
 }

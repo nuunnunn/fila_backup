@@ -1,3 +1,4 @@
+@charset "utf-8";
 @use "reset";
 
 
@@ -108,9 +109,8 @@
         h1{margin: 30px 0;}
         h5 {color: #999;}
         h5:last-of-type{margin-bottom: 30px;}
-        button{width: 200px; height: 50px; border-radius: 30px; @include solid(1px, #ddd);
-            background: transparent; font-weight: 500; transition: .5s;
-            &:hover{background: $navy; color: #fff;}
+        button{width: 200px; height: 50px; border-radius: 30px; @include whiteBtn(); 
+            @include solid(1px, #ddd); font-weight: 500;
         }
         .swiper-button-prev{display: none;}
         .swiper-button-next{display: none;}
@@ -123,9 +123,8 @@
 .recommend_title{ display: flex; justify-content: space-between;
     h1{font-weight: 700; width: 100%; font-size: 2.2rem; margin-bottom: 30px;}
 
-    .more{width: 100px; height: 50px; border-radius: 30px; @include solid(1px, #ddd);
-        background: transparent; font-weight: 500; transition: .5s;
-        &:hover{background: $navy; color: #fff;}
+    .more{width: 100px; height: 50px; border-radius: 30px; @include whiteBtn(); 
+        @include solid(1px, #ddd); font-weight: 500;
     }
 }
 
@@ -228,6 +227,7 @@
 }
 
 
+//main 슬라이드 반응형
 @media (min-width:1281px) and (max-width:1600px) {
     .mainSwiper {
     
@@ -327,7 +327,7 @@
 @media (max-width:499px) {
     .mainSwiper {    
         .swiper-slide {
-            .swiper_txt { width: 89%; top: 51%; 
+            .swiper_txt { width: 89%; top: 60%; 
 
                 h1 { font-size: 2rem; display: none; }    
                 .swiper_btn { border-radius: 30px; padding: 8px 25px; font-size: 0.8rem; }

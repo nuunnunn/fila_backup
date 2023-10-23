@@ -1,25 +1,27 @@
+@charset "utf-8";
 @use "reset";
 
-.detail_wrap{max-width: 1855px !important; padding-top: 100px;}
+.container{max-width: 100% !important; padding: 100px 35px 0;}
 .col-md-7{width: 63% !important;}
 .col-md-5{width: 37% !important;}
+.row{margin-right: 0; margin-left: 0;}
+.row > * {padding-left: 0; padding-right: 0;}
 
 .detail_left{
 
     .d_left_top{ display: flex; 
 
-        .d_l_t_left{display: flex; flex-wrap: wrap; width: 50%; margin-right: 8px;
-            img{width: 100%; margin-bottom: 8px;}
+        .d_l_t_left{display: flex; flex-wrap: wrap; width: calc(50% - 4px); 
+            img{width: 100%; padding: 0 4px 8px 0;}
         }
 
-        .d_l_t_right{ width: 50%; height: 78.7vh; top: 100px; position: sticky; overflow: hidden; margin-bottom: 6px;
-            & > video{width: 100%; position: absolute; top: 50%; left: 50%; 
-                transform: translate(-50%,-50%);
-            }
+        .d_l_t_right{ width: calc(50% - 4px); height: 39.55vw; top: 100px; position: sticky; overflow: hidden; 
+            margin-bottom: 8px; 
+            & > video{width: 100%; padding: 0 0 8px 4px; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); }
         }
     }
 
-    .d_left_bottom{display: flex; justify-content: center; flex-wrap: wrap;
+    .d_left_bottom{display: flex; justify-content: center; flex-wrap: wrap; padding-top: 70px;
         img{margin-bottom: 100px; width: 80%;}
         h4{font-weight: 700; width: 100%; text-align: center;}
 
@@ -51,18 +53,18 @@
 
 .detail_right{position: sticky; top: 100px; display: flex; height: 90vh; padding-right: 0 !important;
 
-    .d_r_left{width: calc((100% + 40px) / 2 - 40px); padding-left: 15px;
+    .d_r_left{width: calc((100% + 40px) / 2 - 40px); padding-left: 30px;
     
         &>div{display: flex; justify-content: space-between;}
         span{ font-size: 0.85rem; font-weight: 500; }
         h3{margin: 20px 0 20px 0; font-weight: 700;}
         p{font-weight: 500;
-            &:not(:first-of-type){font-size: 0.89rem;}
+            &:not(:first-of-type){font-size: 0.87rem;}
             &:first-of-type{margin-bottom: 50px;}
-            &:nth-of-type(2),p:nth-of-type(3),p:nth-of-type(4){margin-bottom: 30px;}
+            &:nth-of-type(2),&:nth-of-type(3),&:nth-of-type(4){margin-bottom: 30px;}
             &:nth-of-type(5){margin-bottom: 0px;}
             &:last-of-type{text-decoration: underline; cursor: pointer;}
-            &:nth-of-type(5),&:nth-of-type(6),&:last-of-type{color: #999; font-weight: 600; font-size: 0.87rem;}
+            &:nth-of-type(5),&:nth-of-type(6),&:last-of-type{color: #999; font-weight: 600; font-size: 0.85rem;}
         }
     }
 
@@ -71,26 +73,25 @@
         &::-webkit-scrollbar{display: none;}
         
         h6{font-weight: 800; font-size: 0.85rem; margin-bottom: 20px;}
-        img:first-of-type, img:nth-of-type(2){width: 28%; margin-right: 5px;}
+        img:first-of-type, img:nth-of-type(2){width: 28%; margin-right: 5px; min-width: 75px;}
+        img:last-of-type{width: 100%; min-width: 200px;}
         &>div{display: flex; justify-content: space-between; margin-top: 30px; flex-wrap: wrap;
             h6:last-of-type{text-decoration: underline; font-weight: 500; cursor: pointer;}
             p{font-weight: 800;}
             &:nth-of-type(2){margin: 15px 0;}
             &:nth-of-type(3){ margin: 10px 0 30px;
-                &>button{width: 70%; height: 60px; background: transparent; @include solid(1px,#333);
-                    border-radius: 30px; font-weight: 600; font-size: 1.1rem;
-                    transition: .3s;
-                    &:hover{background: $navy; color: #fff;}
-                }
+                &>button{width: 79%; height: 60px; @include whiteBtn(); border-radius: 30px; font-size: 1.1rem; }
+                .heart{@include solid(1px,#eee); padding: 17px; font-size: 1.3rem; border-radius: 27px;}
             }
-            &:nth-of-type(4),&:nth-of-type(5),&:nth-of-type(6){
-                border-bottom: 1px solid #eee; cursor: pointer;
-                p{font-weight: 500;}
-            }     
             &:last-of-type{ display: block; margin: 20px 0;              
                 span{font-size: 0.85rem; color: #888; text-decoration: underline; margin-right: 10px;}
             }
-        }  
+        } 
+        .click_newMember,.plusBox{ border-bottom: 1px solid #eee; cursor: pointer;
+            
+            p{font-weight: 500;}
+            .up_down{font-size: 0.8rem;}
+        }      
         .newMember{
             p{font-size: 0.9rem; font-weight: 500;}
         } 
@@ -103,31 +104,24 @@
         input[type=radio]:checked+label{background: $navy; color: #fff;}
 
         table{margin-top: 40px; width: 100%; @include solid(1px,#eee); height: 50px;
-            th{width: 30%;
-                &:nth-of-type(2){font-weight: 600; font-size: 0.9rem;
-                    input[type=text]{border: none; outline: none; text-align: center;}
+            th{
+                &:nth-of-type(2){font-weight: 600; font-size: 0.9rem; width: 60%;
+                    input[type=text]{border: none; outline: none; text-align: center; width: 100%;}
                 }
-                &:first-of-type{text-align: left; padding-left: 20px; cursor: pointer;}
-                &:last-of-type{text-align: right; padding-right: 20px; cursor: pointer;}
+                &:first-of-type,&:last-of-type{text-align: center; cursor: pointer; width: 20%;}
             }
         }
 
-        &>button{width: 100%; height: 60px; background: $navy; color: #fff; border: none;
-            border-radius: 30px; font-weight: 600; font-size: 1.1rem;
-            transition: .2s;
-            &:hover{background: rgb(1, 40, 102)}
-        }
-        .heart{@include solid(1px,#eee); padding: 17px; font-size: 1.3rem; border-radius: 27px;}
+        &>button{width: 100%; height: 60px; @include navyBtn(); border-radius: 30px; font-size: 1.1rem; }
     }
 }
 
 
-.detail_under{ padding-top: 100px;
+.detail_under{ padding-top: 100px; 
     h1{font-weight: 700; font-size: 2.2rem; text-align: center;}
-
     
     .detail_swiper{width: 100%;
-        .swiper-slide{ padding: 60px 0;
+        .swiper-slide{ padding: 60px 0; padding-left: 15px;
             img{width: 100%; margin-bottom: 10px; cursor: pointer;}
             h6{font-size: 0.9rem; margin-bottom: 15px;}
             h5{font-weight: 800; font-size: 1.1rem; margin-bottom: 15px;}
@@ -140,6 +134,277 @@
         .swiper-button-next{display: none;}
         .swiper-scrollbar.swiper-scrollbar-horizontal{width: 80%; left: 9%; height: 2px;
             .swiper-scrollbar-drag{background: #333;}
+        }
+    }
+}
+
+
+
+@media (min-width:1712px) and (max-width:1915px){
+    .detail_left{
+        .d_left_top{
+            .d_l_t_right{height: 39.3vw;}
+        }
+    }    
+}
+
+
+@media (min-width:1500px) and (max-width:1711px){
+    .detail_left{
+        .d_left_top{
+            .d_l_t_right{height: 39vw;}
+        }
+    }
+    
+    
+    .detail_right{
+        .d_r_right{
+            &>div{
+                &:nth-of-type(3){
+                    &>button{width: 100%; margin-bottom: 10px; }
+                    .heart{width: 100%; border-radius: 27px;}
+                }
+            } 
+
+            .click_newMember{ flex-wrap: wrap; justify-content: center;
+                .up_down{width: 100%; margin-bottom: 10px;}
+            }      
+        }
+    }
+}
+
+
+
+
+@media (min-width:1280px) and (max-width:1499px){
+    .col-md-7{width: 70% !important;}
+    .col-md-5{width: 30% !important;}
+
+    .detail_left{
+        .d_left_top{
+            .d_l_t_right{height: 43vw;}
+        }
+    }
+    
+    
+    .detail_right{ display: block; overflow-y: scroll; height: 86vh;
+        &::-webkit-scrollbar{display: none;}
+
+        .d_r_left{width: 100%;  padding-bottom: 20px;  
+            p{font-weight: 500;
+                &:first-of-type{margin-bottom: 30px;}
+                &:nth-of-type(2),&:nth-of-type(3),&:nth-of-type(4){margin-bottom: 15px;}
+            }
+        }
+    
+        .d_r_right{width: 100%; overflow: visible;
+            img:first-of-type, img:nth-of-type(2){width: 25%; margin-right: 5px;}
+        }
+    }
+
+
+    .detail_under{
+        .detail_swiper{
+            .swiper-button-prev{display: block; color: #052c65; @include solid(1px,#052c65);
+                padding: 7px 22px 10px 8px;
+                &::after {font-size: 1.7rem; }
+            }
+            .swiper-button-next{display: block; color: #052c65; @include solid(1px,#052c65);
+                padding: 7px 20px 10px 10px;
+                &::after {font-size: 1.7rem; }
+            }
+        }
+    }
+}
+
+
+@media (min-width:1091px) and (max-width:1279px){
+    .col-md-7{width: 70% !important;}
+    .col-md-5{width: 30% !important;}
+
+    .detail_left{
+        .d_left_top{
+            .d_l_t_right{height: 42.5vw;}
+        }
+    }
+    
+    
+    .detail_right{ display: block; overflow-y: scroll; height: 86vh;
+        &::-webkit-scrollbar{display: none;}
+
+        .d_r_left{width: 100%;  padding-bottom: 20px;  
+            p{font-weight: 500;
+                &:first-of-type{margin-bottom: 30px;}
+                &:nth-of-type(2),&:nth-of-type(3),&:nth-of-type(4){margin-bottom: 15px;}
+            }
+        }
+    
+        .d_r_right{width: 100%; overflow: visible;
+            img:first-of-type, img:nth-of-type(2){width: 25%; margin-right: 5px;}
+        }
+    }
+}
+
+
+@media (min-width:861px) and (max-width:1090px){
+    .col-md-7{width: 70% !important;}
+    .col-md-5{width: 30% !important;}
+
+    .detail_left{
+        .d_left_top{
+            .d_l_t_right{height: 41.8vw;}
+        }
+    }
+    
+    
+    .detail_right{ display: block; overflow-y: scroll; height: 86vh;
+        &::-webkit-scrollbar{display: none;}
+
+        .d_r_left{width: 100%;  padding-bottom: 20px;  
+            p{font-weight: 500;
+                &:first-of-type{margin-bottom: 30px;}
+                &:nth-of-type(2),&:nth-of-type(3),&:nth-of-type(4){margin-bottom: 15px;}
+            }
+        }
+    
+        .d_r_right{width: 100%; overflow: visible;
+            &>div{
+                &:nth-of-type(3){
+                    &>button{width: 100%; margin-bottom: 10px; }
+                    .heart{width: 100%; border-radius: 27px;}
+                }
+            } 
+
+            .click_newMember{ flex-wrap: wrap; justify-content: center;
+                .up_down{width: 100%; margin-bottom: 10px;}
+            }      
+
+            img:first-of-type, img:nth-of-type(2){width: 25%; margin-right: 5px;}
+        }
+    }
+
+}
+
+//  (min-width:500px) and 
+@media(max-width:860px){
+    .container{ padding: 80px 35px 0;}
+    .row{flex-direction: column-reverse;}
+    .col-md-7{width: 100% !important;}
+    .col-md-5{width: 100% !important;}
+
+    .detail_left{
+        .d_left_top{ display: flex; 
+            .d_l_t_right{ height: 58.55vw; top: 80px;}
+        }
+    
+        .d_left_bottom{display: flex; justify-content: center; flex-wrap: wrap; padding-top: 70px;
+            img{margin-bottom: 100px; width: 80%;}
+            h4{font-weight: 700; width: 100%; text-align: center;}
+    
+            &>div{ width: 80%; margin-bottom: 20px;
+                p{font-size: 0.85rem; font-weight: 600;}
+                .graph{width: 100%; background: #eee; height: 10px; border-radius: 5px; display: flex;
+                    justify-content: space-between; 
+                    .circle{width: 10px; height: 100%; background: #ccc; border-radius: 5px;}
+                    .bkCircle{background: #333;}
+                }
+                .graph_txt{display: flex; justify-content: space-between;}
+            }
+    
+            &>p{width: 80%; text-align: right; font-size: 0.9rem; color: #999; font-weight: 500;
+                &::after{content: '!'; background: #333; color: #fff; padding: 2px 8px; border-radius: 10px;
+                margin-left: 5px;}
+            }
+    
+            .table{@include solid(1px,#ccc);
+                td{line-height: 40px; font-size: 0.9rem;
+                    &:first-child{width: 19%; background: #333; color: #fff; }
+                    &:nth-child(2){box-shadow: inset 4px 0 4px -2px rgba(0,0,0,0.30);}
+                    &:nth-child(2),&:nth-child(3){border-right: 1px solid #ccc;}
+                }
+            }
+        }
+    }
+    
+    
+    .detail_right{position: static; top: 100px; display: flex; height: 90vh; padding-right: 0 !important;
+    
+        .d_r_left{width: calc((100% + 40px) / 2 - 40px); padding-left: 30px;
+        
+            &>div{display: flex; justify-content: space-between;}
+            span{ font-size: 0.85rem; font-weight: 500; }
+            h3{margin: 20px 0 20px 0; font-weight: 700;}
+            p{font-weight: 500;
+                &:not(:first-of-type){font-size: 0.87rem;}
+                &:first-of-type{margin-bottom: 50px;}
+                &:nth-of-type(2),&:nth-of-type(3),&:nth-of-type(4){margin-bottom: 30px;}
+                &:nth-of-type(5){margin-bottom: 0px;}
+                &:last-of-type{text-decoration: underline; cursor: pointer;}
+                &:nth-of-type(5),&:nth-of-type(6),&:last-of-type{color: #999; font-weight: 600; font-size: 0.85rem;}
+            }
+        }
+    
+        .d_r_right{width: calc((100% + 40px) / 2 - 40px); height: 100%; padding-left: 30px; flex-basis: 50%; 
+            overflow-y: scroll;
+            &::-webkit-scrollbar{display: none;}
+            
+            h6{font-weight: 800; font-size: 0.85rem; margin-bottom: 20px;}
+            img:first-of-type, img:nth-of-type(2){width: 28%; margin-right: 5px; min-width: 75px;}
+            img:last-of-type{width: 100%; min-width: 200px;}
+            &>div{display: flex; justify-content: space-between; margin-top: 30px; flex-wrap: wrap;
+                h6:last-of-type{text-decoration: underline; font-weight: 500; cursor: pointer;}
+                p{font-weight: 800;}
+                &:nth-of-type(2){margin: 15px 0;}
+                &:nth-of-type(3){ margin: 10px 0 30px;
+                    &>button{width: 79%; height: 60px; @include whiteBtn(); border-radius: 30px; font-size: 1.1rem; }
+                    .heart{@include solid(1px,#eee); padding: 17px; font-size: 1.3rem; border-radius: 27px;}
+                }
+                &:last-of-type{ display: block; margin: 20px 0;              
+                    span{font-size: 0.85rem; color: #888; text-decoration: underline; margin-right: 10px;}
+                }
+            } 
+            .click_newMember,.plusBox{ border-bottom: 1px solid #eee; cursor: pointer;
+                
+                p{font-weight: 500;}
+                .up_down{font-size: 0.8rem;}
+            }      
+            .newMember{
+                p{font-size: 0.9rem; font-weight: 500;}
+            } 
+    
+            input[type=radio]{display: none;}
+            input[type=radio]+label{display: inline-block; cursor: pointer; padding: 15px 15px; border-radius: 5px;
+                @include solid(1px,#eee); background: transparent; margin-right: 5px; font-size: 0.85rem;
+                font-weight: 500;
+            }
+            input[type=radio]:checked+label{background: $navy; color: #fff;}
+    
+            table{margin-top: 40px; width: 100%; @include solid(1px,#eee); height: 50px;
+                th{
+                    &:nth-of-type(2){font-weight: 600; font-size: 0.9rem; width: 60%;
+                        input[type=text]{border: none; outline: none; text-align: center; width: 100%;}
+                    }
+                    &:first-of-type,&:last-of-type{text-align: center; cursor: pointer; width: 20%;}
+                }
+            }
+    
+            &>button{width: 100%; height: 60px; @include navyBtn(); border-radius: 30px; font-size: 1.1rem; }
+        }
+    }
+}
+
+
+@media (min-width:500px) and (max-width:767px){
+    .detail_under{
+        .detail_swiper{
+            .swiper-button-prev{display: block; color: #052c65; @include solid(1px,#052c65);
+                padding: 7px 22px 10px 8px;
+                &::after {font-size: 1.7rem; }
+            }
+            .swiper-button-next{display: block; color: #052c65; @include solid(1px,#052c65);
+                padding: 7px 20px 10px 10px;
+                &::after {font-size: 1.7rem; }
+            }
         }
     }
 }

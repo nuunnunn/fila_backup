@@ -11,11 +11,13 @@ import Exhibition from '../components/Exhibition';
 import Recommend from '../components/Recommend';
 import Community from '../components/Community';
 import ForCustomer from '../components/ForCustomer';
-import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux'
+import { chTab } from '../store'
 
 const Home = (props) => {
     let { moterCoreData } = props;
-    let [tab, setTab] = useState(0);
+    let tab = useSelector(state => state.tab)
+    let dispatch = useDispatch()
 
 
     return (
@@ -71,26 +73,26 @@ const Home = (props) => {
 
                 <Nav variant="underline" defaultActiveKey="motorCore" className='mt-4'>
                     <Nav.Item>
-                        <Nav.Link eventKey="motorCore" onClick={() => { setTab(0) }}>#MOTORCORE</Nav.Link>
+                        <Nav.Link eventKey="motorCore" onClick={() => { dispatch(chTab(0)) }}>#MOTORCORE</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                        <Nav.Link eventKey="wind" onClick={() => { setTab(1) }}>#윈드브레이커</Nav.Link>
+                        <Nav.Link eventKey="wind" onClick={() => { dispatch(chTab(1)) }}>#윈드브레이커</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                        <Nav.Link eventKey="fBox" onClick={() => { setTab(2) }}>#F-BOX</Nav.Link>
+                        <Nav.Link eventKey="fBox" onClick={() => { dispatch(chTab(2)) }}>#F-BOX</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                        <Nav.Link eventKey="trend" onClick={() => { setTab(3) }}>#Trend</Nav.Link>
+                        <Nav.Link eventKey="trend" onClick={() => { dispatch(chTab(3)) }}>#Trend</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                        <Nav.Link eventKey="tennis" onClick={() => { setTab(4) }}>#테니스</Nav.Link>
+                        <Nav.Link eventKey="tennis" onClick={() => { dispatch(chTab(4)) }}>#테니스</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                        <Nav.Link eventKey="kids" onClick={() => { setTab(5) }}>#FILA KIDS X HIRO</Nav.Link>
+                        <Nav.Link eventKey="kids" onClick={() => { dispatch(chTab(5)) }}>#FILA KIDS X HIRO</Nav.Link>
                     </Nav.Item>
                 </Nav>
 
-                <NowTab tab={tab} moterCoreData={moterCoreData} />
+                <NowTab moterCoreData={moterCoreData} />
             </div>
             
 
