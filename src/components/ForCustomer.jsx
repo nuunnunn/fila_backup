@@ -9,7 +9,7 @@ import {faHeart} from '@fortawesome/free-solid-svg-icons';
 import forCustomer_data from '../forCustomer_data';
 
 const ForCustomer = () => {
-    let forCustomerData = useState(forCustomer_data);
+    let [forCustomerData] = useState(forCustomer_data);
     
   return (
     <div className='forCustomerSlide'>
@@ -43,7 +43,7 @@ const ForCustomer = () => {
             className="mySwiper"
         >
         {
-            forCustomerData[0].map((v,i)=> 
+            forCustomerData.map((v,i)=> 
                 <SwiperSlide key={i} className='cancelBasic'>
                     <a>
                         <img src={v.imgUrl} alt="shell jacket" />

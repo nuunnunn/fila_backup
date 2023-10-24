@@ -63,8 +63,12 @@ const Cart = () => {
                             slidesPerView: 2,
                             spaceBetween: 20,
                         },
-                        768: {
+                        600: {
                             slidesPerView: 2.5,
+                            spaceBetween: 20,
+                        },
+                        860: {
+                            slidesPerView: 3,
                             spaceBetween: 20,
                         },
                         1024: {
@@ -72,7 +76,7 @@ const Cart = () => {
                             spaceBetween: 20,
                         },
                         1280: {
-                            slidesPerView: 4,
+                            slidesPerView: 4.5,
                             spaceBetween: 20,
                         },
                         1500: {
@@ -86,13 +90,15 @@ const Cart = () => {
                         detailData[0].map((v, i) =>
                             <SwiperSlide key={i}>
                                 <img src={v.imgUrl} alt="shell jacket" />
-                                <h6>{v.type}</h6>
-                                <h5>{v.name}</h5>
-                                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                    <h6>{v.price}</h6>
-                                    <FontAwesomeIcon icon={faHeart} style={{ color: '#ccc' }} />
+                                <div className='cart_swiper_txt'>
+                                    <h6>{v.type}</h6>
+                                    <h5>{v.name}</h5>
+                                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                        <h6>{v.price}</h6>
+                                        <FontAwesomeIcon icon={faHeart} style={{ color: '#ccc' }} />
+                                    </div>
+                                    <button>장바구니 담기</button>
                                 </div>
-                                <button>장바구니 담기</button>
                             </SwiperSlide>
                         )
                     }

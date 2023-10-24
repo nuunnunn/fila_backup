@@ -59,7 +59,7 @@ let cart = createSlice({
 
     deleteItem(state, action){
       let num = state.findIndex(a => a.id == action.payload)
-      alert(`${state[num].name} 상품을 삭제하시겠습니까?`)
+      alert(`'${state[num].name}' 상품을 삭제하시겠습니까?`)
       state.splice(num,1)
     },
     
@@ -73,6 +73,18 @@ let cart = createSlice({
       }else{
         state.push(action.payload)
       }
+    },
+
+    sortName(state){
+      state.sort((a,b)=>a.name > b.name ? 1 : -1)
+    },
+
+    sortPrice_row(state){
+      state.sort((a,b)=>a.price > b.price ? 1 : -1)
+    },
+
+    sortPrice_high(state){
+      state.sort((a,b)=>a.price < b.price ? 1 : -1)
     }
   }
 })
@@ -80,7 +92,7 @@ let cart = createSlice({
 
 export let {chTab} = tab.actions
 export let {changeName} = user.actions
-export let {addCount, minusCount, deleteItem, addItem} = cart.actions
+export let {addCount, minusCount, deleteItem, addItem, sortName, sortPrice_row, sortPrice_high} = cart.actions
 
 export default configureStore({
   reducer: {

@@ -147,7 +147,7 @@ const Detail = (props) => {
                                 (moterCoreData[id].imgUrl9 != '') ? <img src={moterCoreData[id].imgUrl9} alt="motorcore" /> : null
                             }
 
-                            <div>
+                            <div className='size'>
                                 <h6>사이즈</h6>
                                 <h6>매장 재고 현황</h6>
                             </div>
@@ -157,34 +157,36 @@ const Detail = (props) => {
                             <input name='size' type="radio" id='size2' />
                             <label htmlFor="size2">095(M)</label>
 
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th><FontAwesomeIcon icon={faMinus} /></th>
-                                        <th><input type="text" defaultValue={1} /></th>
-                                        <th><FontAwesomeIcon icon={faPlus} /></th>
-                                    </tr>
-                                </thead>
-                            </table>
+                            <div className='go_cart'>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th><FontAwesomeIcon icon={faMinus} /></th>
+                                            <th><input type="text" defaultValue={1} /></th>
+                                            <th><FontAwesomeIcon icon={faPlus} /></th>
+                                        </tr>
+                                    </thead>
+                                </table>
 
-                            <div>
-                                <p>주문금액</p>
-                                <p>{moterCoreData[id].price.toLocaleString()}원</p>
+                                <div>
+                                    <p>주문금액</p>
+                                    <p>{moterCoreData[id].price.toLocaleString()}원</p>
+                                </div>
+
+                                <button>바로 구매하기</button>
+                                <div>
+                                    <button onClick={() => {
+                                        dispatch(addItem({
+                                            id: moterCoreData[id].id, name: moterCoreData[id].name, price: moterCoreData[id].price
+                                            , code: moterCoreData[id].code, count: 1, imgUrl: moterCoreData[id].imgUrl
+                                        }))
+                                        navigate('/cart')
+                                    }}>카트담기</button>
+                                    <FontAwesomeIcon icon={faHeart} style={{ color: '#ccc' }} className='heart' />
+                                </div>
+
+                                <img src="/img/review_event_d_banner.jpg" alt="review_event" />
                             </div>
-
-                            <button>바로 구매하기</button>
-                            <div>
-                                <button onClick={() => {
-                                    dispatch(addItem({
-                                        id: moterCoreData[id].id, name: moterCoreData[id].name, price: moterCoreData[id].price
-                                        , code: moterCoreData[id].code, count: 1, imgUrl: moterCoreData[id].imgUrl
-                                    }))
-                                    navigate('/cart')
-                                }}>카트담기</button>
-                                <FontAwesomeIcon icon={faHeart} style={{ color: '#ccc' }} className='heart' />
-                            </div>
-
-                            <img src="/img/review_event_d_banner.jpg" alt="review_event" />
 
                             <div className='click_newMember' onClick={() => {
                                 setDisplay(!display)
@@ -193,12 +195,13 @@ const Detail = (props) => {
                             >
                                 <p>신규회원 10,000원 할인 쿠폰 발급</p>
                                 <FontAwesomeIcon className='up_down' icon={chevron ? faChevronUp : faChevronDown} />
-                            </div>
-                            {display ?
+                            
+                                {display ?
                                 <div className='newMember'>
                                     <p>가입 시 즉시발급 / 50,000원 이상 구매 시 사용가능</p>
                                 </div> : null
                             }
+                            </div>
                             <div className='plusBox'>
                                 <p>상품 리뷰 &nbsp;<small>0</small></p>
                                 <FontAwesomeIcon icon={faPlus} />
@@ -234,8 +237,12 @@ const Detail = (props) => {
                             slidesPerView: 2,
                             spaceBetween: 20,
                         },
-                        768: {
+                        600: {
                             slidesPerView: 2.5,
+                            spaceBetween: 20,
+                        },
+                        860: {
+                            slidesPerView: 3,
                             spaceBetween: 20,
                         },
                         1024: {
@@ -243,7 +250,7 @@ const Detail = (props) => {
                             spaceBetween: 20,
                         },
                         1280: {
-                            slidesPerView: 4,
+                            slidesPerView: 4.5,
                             spaceBetween: 20,
                         },
                         1500: {
@@ -257,13 +264,15 @@ const Detail = (props) => {
                         detailData[0].map((v, i) =>
                             <SwiperSlide key={i}>
                                 <img src={v.imgUrl} alt="shell jacket" />
-                                <h6>{v.type}</h6>
-                                <h5>{v.name}</h5>
-                                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                    <h6>{v.price}</h6>
-                                    <FontAwesomeIcon icon={faHeart} style={{ color: '#ccc' }} />
+                                <div className='detail_swiper_txt'>
+                                    <h6>{v.type}</h6>
+                                    <h5>{v.name}</h5>
+                                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                        <h6>{v.price}</h6>
+                                        <FontAwesomeIcon icon={faHeart} style={{ color: '#ccc' }} />
+                                    </div>
+                                    <button>장바구니 담기</button>
                                 </div>
-                                <button>장바구니 담기</button>
                             </SwiperSlide>
                         )
                     }

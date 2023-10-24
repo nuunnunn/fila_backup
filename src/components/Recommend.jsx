@@ -5,9 +5,13 @@ import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
 
 import recommend_data from '../recommend_data';
+import RecoPop from './RecoPop';
 
 const Recommend = () => {
-    let recommendData = useState(recommend_data);
+    let [recommendData] = useState(recommend_data);
+    
+    let [popUp, setPopUp] = useState(false);
+    let [idx, setIdx] = useState(0)
     
   return (
     <div className='exhibitionSlide'>
@@ -41,13 +45,21 @@ const Recommend = () => {
             className="mySwiper"
         >
         {
-            recommendData[0].map((v,i)=> 
+            recommendData.map((v,i)=> 
                 <SwiperSlide key={i}>
-                    <img src={v.imgUrl} alt="shell jacket" />
+                    <img src={v.imgUrl} alt="shell jacket" onClick={()=>{
+                        setPopUp(true) 
+                        setIdx(i)
+                    }}/>
                 </SwiperSlide>
             )
+
+           
         }
-        </Swiper>        
+        </Swiper>
+        {
+            popUp ? <RecoPop  idx={idx} setPopUp={setPopUp} recommendData={recommendData} /> : null
+        }        
     </div>
   )
 }

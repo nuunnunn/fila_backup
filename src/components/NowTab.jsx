@@ -19,11 +19,11 @@ const NowTab = (props) => {
     const navigate = useNavigate();
     let tab = useSelector(state => state.tab)
     let { moterCoreData} = props;
-    let windData = useState(wind_data);
-    let fBoxData = useState(fBox_data);
-    let trendData = useState(trend_data);
-    let tennisData = useState(tennis_data);
-    let kidsData = useState(kids_data);
+    let [windData] = useState(wind_data);
+    let [fBoxData] = useState(fBox_data);
+    let [trendData] = useState(trend_data);
+    let [tennisData] = useState(tennis_data);
+    let [kidsData] = useState(kids_data);
 
     let [fade, setFade] = useState('');
     useEffect(() => {
@@ -84,7 +84,7 @@ const NowTab = (props) => {
                             </div>
                         </SwiperSlide>
                     ),
-                    windData[0].map((v, i) =>
+                    windData.map((v, i) =>
                         <SwiperSlide key={i}>
                             <NavLink href={`/detail/${i}`}>
                                 <img src={v.imgUrl} alt="shell jacket" />
@@ -100,7 +100,7 @@ const NowTab = (props) => {
                             </div>
                         </SwiperSlide>
                     ),
-                    fBoxData[0].map((v, i) =>
+                    fBoxData.map((v, i) =>
                         <SwiperSlide key={i}>                            
                             <NavLink href={`/detail/${i}`}>
                                 <img src={v.imgUrl} alt="shell jacket" />
@@ -116,7 +116,7 @@ const NowTab = (props) => {
                             </div>
                         </SwiperSlide>
                     ),
-                    trendData[0].map((v, i) =>
+                    trendData.map((v, i) =>
                         <SwiperSlide key={i}>
                             <NavLink href={`/detail/${i}`}>
                                 <img src={v.imgUrl} alt="shell jacket" />
@@ -132,7 +132,7 @@ const NowTab = (props) => {
                             </div>
                         </SwiperSlide>
                     ),
-                    tennisData[0].map((v, i) =>
+                    tennisData.map((v, i) =>
                         <SwiperSlide key={i}>
                             <NavLink href={`/detail/${i}`}>
                                 <img src={v.imgUrl} alt="shell jacket" />
@@ -148,7 +148,7 @@ const NowTab = (props) => {
                             </div>
                         </SwiperSlide>
                     ),
-                    kidsData[0].map((v, i) =>
+                    kidsData.map((v, i) =>
                         <SwiperSlide key={i}>
                         <NavLink href={`/detail/${i}`}>
                             <img src={v.imgUrl} alt="shell jacket" />

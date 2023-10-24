@@ -7,7 +7,7 @@ import { Navigation } from 'swiper/modules';
 import exhibition_data from '../exhibition_data';
 
 const Exhibition = () => {
-    let exhibitionData = useState(exhibition_data);
+    let [exhibitionData] = useState(exhibition_data);
     
   return (
     <div className='exhibitionSlide'>
@@ -41,7 +41,7 @@ const Exhibition = () => {
             className="mySwiper"
         >
         {
-            exhibitionData[0].map((v,i)=> 
+            exhibitionData.map((v,i)=> 
                 <SwiperSlide key={i}>
                     <a>
                         <img src={v.imgUrl} alt="shell jacket" />

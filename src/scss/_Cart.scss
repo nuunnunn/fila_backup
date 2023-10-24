@@ -1,6 +1,4 @@
 @charset "utf-8";
-
-$--bs-nav-underline-border-width: 0.1rem;
 @use "reset";
 
 .nav-underline .nav-link.active, .nav-underline .show > .nav-link{color: #333 !important; font-weight: 500;}
@@ -20,8 +18,16 @@ $--bs-nav-underline-border-width: 0.1rem;
 
     .cartTab_wrap{display: flex; flex-wrap: wrap; justify-content: space-between;        
 
-        .allCheck{padding-bottom: 30px; display: flex; align-items: center; width: 100%;
-            span{margin-left: 8px;}
+        .allCheck{padding-bottom: 30px; display: flex; align-items: center; justify-content: space-between; 
+            width: 70%;
+            &>div{
+                &:first-of-type{ display: flex; align-items: center;
+                    span{font-weight: 500; margin-left: 8px;}
+                }
+                &:last-of-type{
+                    span{text-decoration: underline; color: #999; margin-left: 10px; cursor: pointer;}
+                }
+            }
         }
 
         input[type=checkbox]{align-self: flex-start; display: none;
@@ -36,7 +42,7 @@ $--bs-nav-underline-border-width: 0.1rem;
             .c_p_box{width: 100%; display: flex; justify-content: space-between;
                 border-top: 1px solid #eee; padding: 40px 0;
 
-                img{width: 11%;}
+                img{width: 11%; min-width: 100px; height: 100%;}
                 &>div:first-of-type{width: 70%;
                     p{font-size: 0.9rem; font-weight: 500;}
                     h6{font-weight: 700; font-size: 1.2rem;}
@@ -90,7 +96,7 @@ $--bs-nav-underline-border-width: 0.1rem;
     h1{font-weight: 700; font-size: 2.2rem; text-align: center;}        
     
     .cart_swiper{width: 100%; padding-left: 20px;
-        .swiper-slide{ padding: 60px 0;
+        .swiper-wrapper{ padding: 60px 0;
             img{width: 100%; margin-bottom: 10px; cursor: pointer;}
             h6{font-size: 0.9rem; margin-bottom: 15px;}
             h5{font-weight: 800; font-size: 1.1rem; margin-bottom: 15px;}
@@ -108,8 +114,38 @@ $--bs-nav-underline-border-width: 0.1rem;
 }
 
 
+//기본값
+@media (max-width:1660px){
+    .cart_wrap{ padding: 100px 35px 0 35px; max-width: 100%; }
+}
+@media (max-width:860px){
+    // .cart_wrap{padding-top: 80px; }
+    .cart_swiperBox{
+        .cart_swiper{ padding-left: 0px;
+            .cart_swiper_txt{padding: 0 15px;}
+        }
+    }
+}
 
-@media (min-width:1280px) and (max-width:1499px){
+
+
+//슬라이드 버튼
+@media (min-width:860px) and (max-width:1023px){
+    .cart_swiperBox{
+        .cart_swiper{
+            .swiper-button-prev{display: block; color: #052c65; @include solid(1px,#052c65);
+                padding: 7px 22px 10px 8px;
+                &::after {font-size: 1.7rem; }
+            }
+            .swiper-button-next{display: block; color: #052c65; @include solid(1px,#052c65);
+                padding: 7px 20px 10px 10px;
+                &::after {font-size: 1.7rem; }
+            }
+        }
+    }
+
+}
+@media (max-width:599px){
     .cart_swiperBox{
         .cart_swiper{
             .swiper-button-prev{display: block; color: #052c65; @include solid(1px,#052c65);
@@ -124,17 +160,138 @@ $--bs-nav-underline-border-width: 0.1rem;
     }
 }
 
-@media (min-width:500px) and (max-width:767px){
-    .cart_swiperBox{
-        .cart_swiper{
-            .swiper-button-prev{display: block; color: #052c65; @include solid(1px,#052c65);
-                padding: 7px 22px 10px 8px;
-                &::after {font-size: 1.7rem; }
+
+
+// 탭메뉴 반응형
+@media (min-width:500px) and (max-width:610px){
+    .cart_wrap{
+        .cart_tab{
+            .nav-item{ width: 25%; 
+                &:last-of-type{width: 100%;}
+            }  
+        }
+    }
+}
+@media (max-width:499px){
+    .cart_wrap{
+        .cart_tab{
+            .nav-item{ width: 33%; 
+                &:last-of-type{width: 35%;}
+            }  
+        }
+    }
+}
+
+
+
+//반응형
+@media (min-width:1280px) and (max-width:1500px){
+    .cart_wrap{
+        .cartTab_wrap{    
+            .allCheck{ width: 60%;}
+            .cart_product{width: 60%; 
+                .c_p_box{
+                    &>div:first-of-type{width: 65%;}
+                }
             }
-            .swiper-button-next{display: block; color: #052c65; @include solid(1px,#052c65);
-                padding: 7px 20px 10px 10px;
-                &::after {font-size: 1.7rem; }
+        }
+    }
+}
+
+
+@media (min-width:768px) and (max-width:1279px){
+    .cart_wrap{
+        .cartTab_wrap{ justify-content: center;
+            .allCheck{ width: 100%;}
+            .cart_product{width: 100%; 
+                .c_p_box{
+                    &>div:first-of-type{width: 65%;}
+                }
             }
+            
+            .cart_priceBox{width: 100%; display: flex; flex-wrap: wrap; justify-content: center; margin: 30px 0;
+                &>div{width: 55%;}
+            }
+        }
+
+        .today_arrived{
+            li{width: 100%; margin-bottom: 10px;}
+        }
+    }
+}
+
+
+@media (min-width:768px) and (max-width:910px){
+    .cart_wrap{
+        .cartTab_wrap{ 
+            .cart_product{
+                .c_p_box{
+                    &>div:first-of-type{width: 62%;}
+                    &>div:last-of-type{ width: 10%; }
+                }
+            }
+        }
+    }
+}
+
+
+
+@media (min-width:577px) and (max-width:767px){
+    .cart_wrap{
+        .cartTab_wrap{ justify-content: center;
+            .allCheck{ width: 100%;}
+            .cart_product{width: 100%; 
+                .c_p_box{
+                    &>div:first-of-type{width: 50%;}                    
+                    &>div:last-of-type{ width: 13%; display: flex; flex-wrap: wrap; flex-direction: row-reverse;
+                        .faTrash{align-self: flex-end; }
+                        &>div{width: 100%; display: flex; justify-content: space-between; align-items: center;}
+                    }
+                }
+            }
+            
+            .cart_priceBox{width: 100%; display: flex; flex-wrap: wrap; justify-content: center; margin: 30px 0;
+                &>div{width: 60%;}
+            }
+        }
+
+        .today_arrived{
+            li{width: 100%; margin-bottom: 10px;}
+        }
+    }
+}
+
+
+
+@media (max-width:576px){
+    .cart_wrap{
+        .cartTab_wrap{ justify-content: center;
+            .allCheck{width: 100%; flex-wrap: wrap;
+                &>div{
+                    &:last-of-type{ width: 100%; padding-top: 10px;
+                        span{margin-left: 0px; margin-right: 10px;}
+                    }
+                }
+            }
+            .cart_product{width: 100%; 
+                .c_p_box{flex-wrap: wrap;
+                    // img{width: 18%;}
+                    &>div:first-of-type{width: 50%;}                    
+                    &>div:last-of-type{ width: 100%; flex-direction: row; justify-content: flex-end;
+                        padding: 20px 0 0 0px;
+                        .faTrash{align-self: center; margin-left: 15%;}
+                        &>div{width: 30%; display: flex; justify-content: space-between; align-items: center;}
+                    }
+                }
+            }
+            
+            .cart_priceBox{width: 100%; display: flex; flex-wrap: wrap; justify-content: center; margin: 30px 0;
+                &>div{width: 100%;}
+            }
+        }
+
+        .today_arrived{
+            li{width: 100%; margin-bottom: 10px;}
         }
     }
 }

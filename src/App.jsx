@@ -6,7 +6,6 @@ import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
 import { Routes, Route } from 'react-router-dom';
 import { useRef, useState } from 'react';
 import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
 
 import motorCore_data from './motorCore_data';
 import Detail from './routes/Detail';
@@ -14,8 +13,7 @@ import Home from './routes/Home';
 import Cart from './routes/Cart';
 
 function App() {  
-  let moterCoreData = useState(motorCore_data);
-  let state = useSelector((state)=>state)
+  let [moterCoreData] = useState(motorCore_data);
   // let [res, setRes] = useState([0,1,2,3,4,5,6,7]);
 
   //위로가기 버튼
@@ -280,9 +278,8 @@ function App() {
 
 
       <Routes>
-        <Route path='/' element={<Home moterCoreData={moterCoreData[0]} />} />
-        <Route path='/product'  />
-        <Route path='/detail/:id' element={<Detail moterCoreData={moterCoreData[0]} />} />
+        <Route path='/' element={<Home moterCoreData={moterCoreData} />} />
+        <Route path='/detail/:id' element={<Detail moterCoreData={moterCoreData} />} />
         <Route path='/cart' element={<Cart/>} />
         <Route path='*' element={<div style={{padding:'150px'}}>페이지를 찾을 수 없습니다.</div>} />
       </Routes>

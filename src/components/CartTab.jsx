@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus,faMinus,faTrash } from '@fortawesome/free-solid-svg-icons';
-import { addCount, deleteItem, minusCount } from '../store';
+import { addCount, deleteItem, minusCount, sortName, sortPrice_high, sortPrice_row } from '../store';
 
 const CartTab = () => {
     let tab = useSelector(state => state.tab.value)
@@ -35,9 +35,16 @@ const CartTab = () => {
         return(
             <div className='cartTab_wrap py-5'>
                 <div className='allCheck'>
-                    <input type="checkbox" id='allCheck' checked  />
-                    <label htmlFor="allCheck"></label>
-                    <span>전체선택</span>
+                    <div>
+                        <input type="checkbox" id='allCheck' checked  />
+                        <label htmlFor="allCheck"></label>
+                        <span>전체선택</span>
+                    </div>
+                    <div>
+                        <span onClick={()=>{dispatch(sortName())}}>이름순 정렬</span>
+                        <span onClick={()=>{dispatch(sortPrice_row())}}>낮은가격순 정렬</span>
+                        <span onClick={()=>{dispatch(sortPrice_high())}}>높은가격순 정렬</span>
+                    </div>
                 </div>
 
                 <div className='cart_product'>

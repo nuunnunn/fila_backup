@@ -7,7 +7,7 @@ import { Navigation } from 'swiper/modules';
 import community_data from '../community_data';
 
 const Community = () => {
-    let communityData = useState(community_data)
+    let [communityData] = useState(community_data)
     
   return (
     <div className='communitySlide'>
@@ -42,7 +42,7 @@ const Community = () => {
             className="mySwiper"
         >
         {
-            communityData[0].map((v,i)=> 
+            communityData.map((v,i)=> 
             <SwiperSlide key={i}>
                 <a>
                     <img src={v.imgUrl} alt="shell jacket" />
